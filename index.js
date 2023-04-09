@@ -2,17 +2,10 @@ const WEATHER_API = config.WEATHER_API;
 const NASA_API = config.NASA_API;
 
 const date = new Date().getFullYear();
-const footer = document.querySelector('footer');
+const footer = document.querySelector('footer p');
 footer.textContent = `Copyright © ${date} By Basit Ali`;
-footer.style.fontSize = "large"
+footer.style.fontSize = "medium"
 
-//<<---------- cricket sports monk api token ------------>>>>>>>
-
-// function getLeagues(){
-//     fetch("https://cricket.sportmonks.com/api/v2.0/leagues?api_token=tJ7bU3nCUZh63hAo8Gp59gF407ZV7GTxYe7lqR5mZdNmHTvptbTLGBEAeoGj")
-//     .then(res => console.log(res))
-//     .catch(err => console.log(err))
-// }
 
 // <<<<<<<<<<<--------- open weather api ------------->>>>>>>>
 
