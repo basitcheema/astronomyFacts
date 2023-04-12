@@ -65,7 +65,10 @@ function displayWeather(currentWeather, planet){
 // <<---------------- NASA API------------------->>>>>.
 // getAstronomyPic();
 // getMarsWeather();
-getRoverPhotos();
+// getRoverPhotos();
+// getRoverPhotos2();
+// getPatent();
+
 async function getAstronomyPic(){
     const res = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${process.env.NASA_API}`)
     const jsonData = await res.json();
@@ -96,11 +99,26 @@ async function getMarsWeather(){
 async function getRoverPhotos(){
     const res = await fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2015-6-3&api_key=${process.env.NASA_API}`);
     const jsonData = await res.json();
-    console.log(jsonData.photos);
+    const cardsRover = document.querySelector('.cards-rover .card');
+    const img = cardsRover.querySelector('img');
+    img.setAttribute('src',jsonData.photos[3].img_src);
+    
+}
+
+async function getRoverPhotos2(){
+    const res = await fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&page=2&api_key=${process.env.NASA_API}`);
+    const jsonData = await res.json();
+    const cardsRoverLong = document.querySelector('.cards-rover-long');
+    const img = cardsRoverLong.querySelector('img');
+    img.setAttribute('src',jsonData.photos[3].img_src);
+}
+
+// NASA Patents
+async function getPatent(){
+    const res = await fetch(`https://api.nasa.gov/techtransfer/patent/?engine&api_key=${process.env.NASA_API}`);
+    const jsonData = await res.json();
+    console.log(jsonData);
 }
 
 
-// 'https://apod.nasa.gov/apod/image/0705/m81_hst.jpg' imgspace
-
-// const carouselSliders = document.querySelectorAll('.carousel-item');
-//     carouselSliders.forEach(carouselItem => carouselItem.querySelector('img').setAttribute('src','https://apod.nasa.gov/apod/image/0705/m81_hst.jpg'))
+ 
